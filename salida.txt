@@ -1,0 +1,4 @@
+  260  2022-05-27 12:25:05 lsd
+  264  2022-05-27 12:25:05 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+  266  2022-05-27 12:22:43 nano ~/.bashrc
+  269  2022-05-27 12:24:27 sudo pacman -S bat
