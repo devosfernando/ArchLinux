@@ -31,7 +31,7 @@ cp /file/.bashrc ~/.bashrc
 #   Teclado en español
 setxkbmap es
 #   FIN.
-reboot
+# reboot
 
 # NOTA:
 # - Wallpaper: nitrogen ~/.config/qtile/

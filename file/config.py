@@ -206,20 +206,13 @@ wmname = "LG3D"
 
 cmd = [
     "setxkbmap es",
-    "feh --bg-fill /home/katarsi/.config/qtile/wallpaper.png",
-    "picom ",
-    "udiskie -t ",
-    "nm-applet ",
-    "volumeicon ",
-    "cbatticon -u 5 ",
-    "dhclient ",
-    "nitrogen --restore "
+    "feh --bg-fill /home/katarsi/.config/qtile/wallpaper.png"
 ]
 
 for x in cmd:
     os.system(x)
 
-#@hook.subscribe.startup_once
-#def autostart():
-#    home = os.path.expanduser('~')
-#    subprocess.Popen([home + '/.config/qtile/autostart.sh'])
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~')
+    subprocess.Popen([home + '/.config/qtile/autostart.sh'])

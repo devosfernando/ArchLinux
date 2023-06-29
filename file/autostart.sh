@@ -2,7 +2,7 @@
 
 
 # iconos del systema
-
+picom &
 udiskie -t &
 nm-applet & 
 volumeicon &
