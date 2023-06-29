@@ -14,3 +14,5 @@ comandos.txt
 Para el GTK y los iconos comando N + apariencia o theme
 rofi-theme-selector para seleccionar el tema del centro
 
+lsd = ls
+
