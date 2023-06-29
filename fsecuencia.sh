@@ -1,14 +1,13 @@
 # DevosFernando 2022-05 config arch
 #
-# Obligatorio: Para iniciar la instalacion archinstall
-# Obligatorio: Para montar la ush crear el directorio mkdir /mnt/usb 
+# Para montar la usb
+mkdir /mnt/usb 
 # Obligatorio: Montar la memoria mount /dev/sdb1 /mnt/usb
-# Carpeta de trabajo devosArch
 # Para el Wifi despues de instalar netctl ejecuta wifi-menu
-# CREAR USUARIO useradd katarsi, passwd katarsi
 #
 #   Actualizamos los paquetes de dependencia
-sudo pacman --noconfirm -Sy bat lsd networkmanager curl nano git netctl dialog dhclient git vlc xterm firefox rofi which nitrogen picom gvfs ttf-dejavu ttf-liberation noto-fonts geeqie pulseaudio pavucontrol pamixer ranger glib2 arandr udiskie ntfs-3g network-manager-applet volumeicon cbatticon xorg-xinit base-devel thunar gvfs lxappearance alacritty neofetch htop unzip alsa-utils keepass
+sudo pacman -Syy
+sudo pacman --noconfirm -Sy bat lsd networkmanager curl nano git netctl dialog dhclient git vlc xterm firefox rofi which nitrogen picom gvfs ttf-dejavu ttf-liberation noto-fonts geeqie pulseaudio pavucontrol pamixer ranger glib2 arandr udiskie ntfs-3g network-manager-applet volumeicon cbatticon xorg-xinit base-devel thunar gvfs lxappearance alacritty neofetch htop unzip alsa-utils keepass opera
 systemctl enable NetworkManager
 #   Copiamos y damos permisos a los archivos de Qtile
 rm ~/.config/qtile/config.py
