@@ -204,6 +204,15 @@ wl_input_rules = None
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
 
+cmd = [
+    "setxkbmap es",
+    "feh --bg-fill /home/katarsi/.config/qtile/wallpaper.png",
+    "picom &"
+]
+
+for x in cmd:
+    os.system(x)
+
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~')

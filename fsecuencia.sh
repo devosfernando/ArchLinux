@@ -7,7 +7,7 @@ mkdir /mnt/usb
 #
 #   Actualizamos los paquetes de dependencia
 sudo pacman -Syy
-sudo pacman --noconfirm -Sy bat lsd networkmanager curl nano git netctl dialog dhclient git vlc xterm firefox rofi which nitrogen picom gvfs ttf-dejavu ttf-liberation noto-fonts geeqie pulseaudio pavucontrol pamixer ranger glib2 arandr udiskie ntfs-3g network-manager-applet volumeicon cbatticon xorg-xinit base-devel thunar gvfs lxappearance alacritty neofetch htop unzip alsa-utils keepass opera
+sudo pacman --noconfirm -Sy bat lsd networkmanager curl feh nano git netctl dialog dhclient git vlc xterm firefox rofi which nitrogen picom gvfs ttf-dejavu ttf-liberation noto-fonts geeqie pavucontrol pamixer ranger glib2 arandr udiskie ntfs-3g network-manager-applet volumeicon cbatticon xorg-xinit base-devel thunar gvfs lxappearance alacritty neofetch htop unzip alsa-utils keepass opera code rofi
 systemctl enable NetworkManager
 #   Copiamos y damos permisos a los archivos de Qtile
 rm ~/.config/qtile/config.py
@@ -28,6 +28,8 @@ unzip ./file/theme/alacritty-master.zip -d ~/.config/alacritty/alacritty.yml
 #   Install oh-My-bash
 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 cp /file/.bashrc ~/.bashrc
+#   Teclado en español
+setxkbmap es
 #   FIN.
 reboot
 
