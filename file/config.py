@@ -118,7 +118,14 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    layout.MonadTall(
+        border_normal="#222222",
+        border_focus="#ff4400",
+        border_width=3,
+        single_border_width=0,
+        margin=6,
+        single_margin=0,
+    ),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -207,6 +214,14 @@ wmname = "LG3D"
 cmd = [
     "setxkbmap es",
     "feh --bg-fill /home/katarsi/.config/qtile/wallpaper.png"
+    "picom &",
+    "udiskie -t &",
+    "nm-applet & ",
+    "volumeicon &",
+    "cbatticon -u 5 &",
+    "dhclient &",
+    "nitrogen --restore &"
+
 ]
 
 for x in cmd:

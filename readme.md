@@ -19,9 +19,9 @@ root@archlinux ˜ # git clone https://github.com/devosfernando/ArchLinux.git
 root@archlinux ˜ # cd ArchLinux
 root@archlinux ˜ # sh fsecuencia.sh
 ```
-- Es importante en este momento crear el usuario katarsi y su clave:
+- Es importante en este momento crear el usuario katarsi y su clave, solo si no se creo con el archinstall:
 ```sh
-root@archlinux ˜ # useradd katarsi
+root@archlinux ˜ # useradd -m katarsi
 root@archlinux ˜ # passwd katarsi
 ```
 

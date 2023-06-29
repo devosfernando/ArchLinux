@@ -1,7 +1,9 @@
 ctrl + shift + c o v Copiar y pegar en aligrity
 Comando + Mayuscula y la pantalle 
-Qtlite
-Ctrl + Comando + Q              Cierra Qtlite
+
+## Qtite
+Ctrl + Comando + Q              Cierra Qtite
+MOD + Ctrl + R                  Reinicia Qtite
 
 
 Para el GTK y los iconos comando N + apariencia o theme
