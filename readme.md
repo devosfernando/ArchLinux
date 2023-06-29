@@ -1,7 +1,7 @@
 # Instalacion de ArchLinux personalizada
 ## _Devosfernando_
 
-[![N|Solid](https://raw.githubusercontent.com/devosfernando/ArchLinux/main/Archlinux.png?token=GHSAT0AAAAAACELDPBE5F37R4EWNRA4SF3MZE5RYMQ)](https://nodesource.com/products/nsolid)
+[![N|Solid](https://archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png)[archlinux.png]
 
 ## Procedimiento de instalacion:
 
@@ -28,3 +28,5 @@ root@archlinux ˜ # passwd katarsi
    
    [ArchLinux.org]: <https://archlinux.org/download/>
    [RUFUS]: <https://rufus.ie/es/>
+   [archlinux.png]: <https://archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png
+   
