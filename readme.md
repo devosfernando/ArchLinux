@@ -12,17 +12,17 @@
 ```sh
 root@archlinux ˜ # archinstall
 ```
-- Es importante en este momento crear el usuario katarsi y su clave:
-```sh
-root@archlinux ˜ # useradd katarsi
-root@archlinux ˜ # passwd katarsi
-```
 - Se debe instalar git para poder ejecutar el proceso automatico de este repositorio, y luego clonarlo:
 ```sh
 root@archlinux ˜ # pacman -S git
 root@archlinux ˜ # git clone https://github.com/devosfernando/ArchLinux.git
 root@archlinux ˜ # cd ArchLinux
 root@archlinux ˜ # sh fsecuencia.sh
+```
+- Es importante en este momento crear el usuario katarsi y su clave:
+```sh
+root@archlinux ˜ # useradd katarsi
+root@archlinux ˜ # passwd katarsi
 ```
 
    
