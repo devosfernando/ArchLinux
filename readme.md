@@ -1,7 +1,7 @@
 # Instalacion de ArchLinux personalizada
 ## _Devosfernando_
 
-[![N|Solid](https://archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png)[archlinux.png]
+[![N|Solid](https://archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png)
 
 ## Procedimiento de instalacion:
 
