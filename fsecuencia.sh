@@ -30,6 +30,9 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/inst
 cp /file/.bashrc ~/.bashrc
 #   Teclado en español
 setxkbmap es
+# Install qtile extras
+cd file
+makepkg -sci
 #   FIN.
 # reboot
 
