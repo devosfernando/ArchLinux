@@ -87,6 +87,7 @@ keys = [
     # Tecla lanzar menu rofi
     Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Abrir menu"),
     Key([mod], "f", lazy.spawn("firefox"), desc="Abrir firefox"),
+    Key([mod], "o", lazy.spawn("opera"), desc="Abrir opera"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
