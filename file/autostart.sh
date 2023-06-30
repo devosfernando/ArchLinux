@@ -2,6 +2,7 @@
 
 
 # iconos del systema
+feh --bg-fill /home/katarsi/.config/qtile/wallpaper.png &
 picom &
 udiskie -t &
 nm-applet & 
