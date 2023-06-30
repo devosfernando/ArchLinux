@@ -37,6 +37,20 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 terminal = guess_terminal()
 
+
+colors = [["#282c34", "#282c34"],
+    ["#1c1f24", "#1c1f24"],
+    ["#dfdfdf", "#dfdfdf"],
+    ["#ff6c6b", "#ff6c6b"],
+    ["#98be65", "#98be65"],
+    ["#da8548", "#da8548"],
+    ["#51afef", "#51afef"],
+    ["#c678dd", "#c678dd"],
+    ["#46d9ff", "#46d9ff"],
+    ["#a9a1e1", "#a9a1e1"],
+    ["#ffffff", "#ffffff"]]
+
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -145,19 +159,124 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                    foreground = colors[2],
+                    background = colors[0]
+                ),
+                widget.GroupBox(
+                    font = "Ubuntu Bold",
+                    fontsize = 21,
+                    margin_y = 3,
+                    margin_x = 0,
+                    padding_y = 5,
+                    padding_x = 3,
+                    borderwidth = 3,
+                    active = colors[2],
+                    inactive = colors[7],
+                    rounded = False,
+                    highlight_color = colors[1],
+                    highlight_method = "line",
+                    this_current_screen_border = colors[6],
+                    this_screen_border = colors [4],
+                    other_current_screen_border = colors[6],
+                    other_screen_border = colors[4],
+                    foreground = colors[2],
+                    background = colors[0]
+                ),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                    foreground = colors[2],
+                    background = colors[0],
+                ),
+                widget.WindowName(
+                    active = colors[2],
+                    inactive = colors[7],
+                    foreground = colors[2],
+                    background = colors[0],
+                ),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Systray(),
-                widget.Clock(format="%m-%d %I:%M %p"),
-                widget.QuickExit(),
-                widget.CurrentLayout(),
+                widget.Systray(
+                    background = colors[0],
+                    padding = 5,
+                    highlight_method = "line",
+                ),
+                widget.CurrentLayoutIcon(
+                    custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                    foreground = colors[6],
+                    background = colors[0],
+                    padding = 0,
+                    scale = 0.7
+                ),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                    foreground = colors[0],
+                    background = colors[0]
+                ),
+                widget.Memory(
+                    foreground = colors[9],
+                    background = colors[0],
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
+                    fmt = 'Mem: {}',
+                    padding = 5
+                ),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                    foreground = colors[0],
+                    background = colors[0]
+                ),
+                widget.Volume(
+                    foreground = colors[7],
+                    background = colors[0],
+                    fmt = 'Vol: {}',
+                    padding = 5
+                ),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                    foreground = colors[0],
+                    background = colors[0]
+                ),
+                widget.ThermalSensor(
+                    foreground = colors[4],
+                    background = colors[0],
+                    threshold = 90,
+                    fmt = 'Temp: {}',
+                    padding = 5
+                ),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                    foreground = colors[0],
+                    background = colors[0]
+                ),
+                widget.Clock(
+                    foreground = colors[6],
+                    background = colors[0],
+                    format = "%m-%d  - %H:%M",
+                ),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                    foreground = colors[0],
+                    background = colors[0]
+                ),
+                #widget.QuickExit(),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                    foreground = colors[0],
+                    background = colors[0]
+                ),
             ],
             36,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
