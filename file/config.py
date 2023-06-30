@@ -332,7 +332,7 @@ wmname = "LG3D"
 
 cmd = [
     "setxkbmap es",
-    "feh --bg-fill /home/katarsi/.config/qtile/wallpaper.png"
+    "feh --bg-fill /home/katarsi/.config/qtile/wallpaper.png &"
     "picom &",
     "udiskie -t &",
     "nm-applet & ",
