@@ -30,3 +30,7 @@ root@archlinux ˜ # passwd katarsi
    [RUFUS]: <https://rufus.ie/es/>
    [archlinux.png]: <https://archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png
    
+
+mod = "mod4"
+mod1 = "alt"
+mod2 = "control"
