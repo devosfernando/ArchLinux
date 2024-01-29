@@ -1,3 +1,6 @@
+mod4 = windows
+
+
 ctrl + shift + c o v Copiar y pegar en aligrity
 Comando + Mayuscula y la pantalle 
 
@@ -11,3 +14,12 @@ rofi-theme-selector para seleccionar el tema del centro
 
 lsd = ls
 
+
+Install fonts Nerds
+  pacman -Ss nerd-fonts
+  sudo pacman -S ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common ttf-nerd-fonts-symbols-common
+  sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
+  sudo pacman -S ttf-roboto
+
+Installar sensores de qtile
+ sudo pacman -S python-psutil
