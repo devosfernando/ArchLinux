@@ -23,3 +23,8 @@ Install fonts Nerds
 
 Installar sensores de qtile
  sudo pacman -S python-psutil
+Find your desired card with:
+
+Sonido
+  cat /proc/asound/cards
+  alsamixer
