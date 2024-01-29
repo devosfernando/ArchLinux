@@ -1,0 +1,98 @@
+Sonido en Debian (ALSA, AlsaMixer, PulseAudio, PipeWire)
+Lo primero que tenemos que hacer es ver que tarjeta de sonido tenemos incorporada en nuestro ordenador, para ello existen muchos métodos:
+
+Desmontar el pc y buscando la tarjeta de sonido
+Mirando en la configuración de nuestro entorno de escritorio (KDE PLASMA, LXQT, GNOME, etc....)
+Usando la consola de comando (lsusb, lspci, lscpi | grep -i audio, inxi -A, y un largo etc...)
+Vamos a partir de que ya sabemos que tarjeta de Audio tenemos instalada en nuestro pc, en mi caso tengo instalada: C-Media CMI8738/CMI8768 PCI Audio.
+Tambien sabemos que podemos tener instalado mas dispositivos que actuan como servidor de sonido, como pueden ser: Microfono, webcam, tarjeta grafica (si, si, las tarjetas gráficas nuevas incorporan un servidor de sonido a traves del puerto HDMI).
+
+En este manual vamos a usar el comando: inxi -A para saber que servidores de sonido tiene nuestro pc, cual es el que realmente nos interesa en cada contexto. En este caso nos vamos a centrar en la tarjeta de sonido: C-Media CMI8738/CMI8768 PCI Audio, que es la que controla el sonido de los altavoces, del microfono, de los auriculares, etc..., es decir todo el audio.
+
+El comando: inxi no se encuentra instalado por defecto en Debian, por tanto para usarlo es obligatorio instalar el paquete: inxi, usando el comando: apt install inxi, o usando synaptic, o cualquier otro gestor de paquetes de linux.
+
+$ inxi -A
+
+
+Como podemos ver en la imagen superior, el comando inxi -A, nos informa que tenemos tres dispositivos que incorporan un servidor de Audio:
+
+
+Tarjeta gráfica NVIDIA High Definition Audio (controla el sonido del puerto HDMI)
+Tarjeta de sonido C-Media CMI8738/CMI8768 PCI Audio (controla todo el Audio del PC)
+Webcam Logitech C270 (controla el sonido del micrófono incorporado)
+
+El comando inxi -A, también nos informa de la API (Interfaz de Programación de Aplicaciones) que realmente gestiona el audio, en este caso es: ALSA, que se encuentra en el kernel que actualmente estoy usando en el momento de escribir este manual: 6.0.0-6-amd64, y el servidor de sonido que esta gestionado las aplicaciones es: PulseAudio, y nos informa que ambos están en activados y funcionando (running: yes)
+ 
+Nota: existen muchas tarjetas de sonido, muchas tarjetas gráficas, webcam, etc.. esto quiere decir que los datos anteriores son los de mi pc. En tu caso lo mas normal es que sean distintos.
+
+
+Ahora vamos a explicar que es y como funcionan: ALSA, AlsaMixer, PulseAudio, PipeWire
+ ALSA  (Advanced Linux Sound Architecture) es el componente del núcleo Linux, que a sustituido a OSS (Open Sound System), y es el que realmente controla el audio, y se encuentra incluido por defecto en el kernel de linux.
+
+ AlsaMixer  es el programa por defecto que se comunica con ALSA y con el que nosotros controlamos el audio, configuramos el sonido y ajustamos el nivel de volúmen de cada canal. Tiene una interfaz gráfica en modo texto usando las librerías: ncurses, sin necesidad del sistema gráfico X Window. Para poder usar alsamixer, se tiene que instalar el paquete: alsa-utils. Soporta casi todas las tarjetas de sonidos. Y, si este esta mal configurado! porque se ha seleccionado una tarjeta de sonido que no es la correcta, o porque el nivel de sonido está al mínimo, o el canal esta muteado (silenciado), da igual lo que configuremos en PulseAudio, o cualquier otro gestor de sonido de los diferentes entorno de escritorio (KDE PLASMA, LXDE, GNOME, etc...) que no tendrá efectos y nunca funcionará.
+
+ PulseAudio  es un servidor de sonido. Es un proceso ejecutándose en segundo plano aceptando una o más fuentes de sonido, como por ejemplo tarjetas de sonido, el audio de la webcam, el del microfono, etc...
+
+La interfaz grafica de PulseAudio es:
+
+    pavucontrol (gtk)
+    pavucontrol-qt (QT)
+
+Si no aparece la interfaz gráfica de pavucontrol es porque no se encuentra instalada los siguiente paquetes:
+
+    pavucontrol (solo es necesario para gtk)
+    pavucontrol-qt
+    pavucontrol-qt-l10n
+
+Uno de los objetivos de PulseAudio es redirigir todos los flujos de sonido a través de él mismo, incluyendo aquellos flujos que provienen de procesos que intentan acceder directamente al hardware (como ALSA u OSS). PulseAudio consigue esto proporcionando una interfaz a las aplicaciones que usan otros sistemas de sonido (como aRts, Phonon o ESD). Pero recordemos que como dijimos al principio, el que verdaderamente controla el audio es el controlador ALSA y por tanto la configuración que tengamos en AlsaMixer.
+
+PulseAudio también proporciona su propia interfaz gráfica para aquellas aplicaciones que quieran usar PulseAudio directamente, el programa se llama: pavucontrol, haciendo creer a las aplicaciones que controlan directamente el dispositivo físico (tarjeta de sonido, microfono, etc...), cuando en realidad el sonido es redirigido al servidor PulseAudio y este a su vez es redirigido al servidor principal llamado: ALSA
+
+Algunas características de PulseAudio:
+
+Control de volumen independiente por aplicación.
+Una arquitectura extensible basada en plugin con soporte para carga de módulos.
+Compatible con la mayoría de aplicaciones de audio.
+Soporte para múltiples fuentes de audio y skins.
+Capacidad para descubrir otros ordenadores en la red local que utilicen PulseAudio, y reproducir sonido directamente hacia sus altavoces.
+Posibilidad de cambiar el dispositivo de salida de audio de cualquier aplicación mientras se está reproduciendo el sonido.
+Una interfaz de línea de comandos con funcionalidades de scripting.
+Muestra de conversión incorporada y funcionalidades de muestreo.
+Capacidad para combinar múltiples tarjetas de sonido en una sola.
+Capacidad para sincronizar múltiples flujos de reproducción.
+Detección dinámica de dispositivos de audio Bluetooth.
+En Linux, el usuario configura ALSA usando AlsaMixer para que a partir de la configuración de AlsaMixer, PulseAudio o el gestor que sea, use y configure el sonido a su antojo, pero partiendo de la configuración de AlsaMixer. Entonces, las aplicaciones se comunican con PulseAudio, el cual a su vez se comunica con ALSA para acceder al dispositivo físico (por ejemplo: una tarjeta de sonido, unos auriculares).
+
+ PipeWire  es la nueva tecnología que va a sustituir a PulseAudio y JACK, PipeWire es compatible con ALSA, PulseAudio y JACK, pero solo puede sustituir a PulseAudio y JACK porque ALSA, al ser parte del kernel Linux, se encarga de suministrar el firmware necesario para hacer funcionar los chips de sonido. La transición de PulseAudio y JACK a PipeWire ha sido muy bien implementada, hasta el extremo de que pipewire ofrece una alta compatibilidad con las herramientas ya realizadas para funcionar con los dos Pulseaudio y jack.
+
+
+Resumen de uso real:
+
+En Linux, el usuario configura ALSA usando AlsaMixer para que a partir de la configuración de AlsaMixer, PulseAudio o el gestor que sea, use y configure el sonido a su antojo, pero partiendo de la configuración de AlsaMixer. Entonces, las aplicaciones se comunican con PulseAudio, el cual a su vez se comunica con ALSA para acceder al dispositivo físico (por ejemplo: una tarjeta de sonido, unos auriculares).
+
+
+
+Comandos systemctl para: arrancar, reiniciar, detener y ver el estado de PulseAudio
+En este caso el comando se ejecuta como usuario normal no como root:
+
+systemctl --user start pulseaudio (arranca el servicio pulseaudio)
+
+systemctl --user restart pulseaudio (reinicia el servicio pulseaudio)
+
+systemctl --user stop pulseaudio (detiene el servicio pulseaudio)
+
+systemctl --user status pulseaudio (para ver el estado del servicio pulseaudio)
+
+
+
+Comandos systemctl para: arrancar, reiniciar, detener y ver el estado de PipeWire
+
+En este caso el comando se ejecuta como usuario normal no como root:
+
+systemctl --user start pipewire (arranca el servicio pipewire)
+
+systemctl --user restart pipewire (reinicia el servicio pipewire)
+
+systemctl --user stop pipewire (detiene el servicio pipewire)
+
+systemctl --user status pipewire (para ver el estado del servicio pipewire)
