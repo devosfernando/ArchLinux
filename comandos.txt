@@ -28,3 +28,9 @@ Find your desired card with:
 Sonido
   cat /proc/asound/cards
   alsamixer
+
+Activar la red
+  sudo pacman -S networkmanager
+  sudo systemctl enable NetworkManager
+  sudo systemctl start NetworkManager
+  NetworkManager
